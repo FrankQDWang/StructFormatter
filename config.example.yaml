@@ -1,0 +1,37 @@
+server:
+  host: 0.0.0.0
+  port: 8080
+  request_body_limit_mb: 2
+
+enforcement:
+  max_attempts: 3
+  timeout_ms_per_attempt: 20000
+  enable_jsonrepair: true
+  enable_deterministic_fix: true
+  enable_type_coercion: true
+  schema_max_bytes: 200000
+  validator_cache_size: 128
+
+routing:
+  mode: provider_prefix
+  model_aliases:
+    glm: "zai/glm-4.5"
+    ds: "deepseek/deepseek-chat"
+
+providers:
+  deepseek:
+    type: openai_compatible
+    base_url: "https://api.deepseek.com"
+    api_key_env: "DEEPSEEK_API_KEY"
+    capabilities:
+      json_object: true
+    drop_params: []
+
+  zai:
+    type: openai_compatible
+    base_url: "https://api.z.ai/api/paas/v4"
+    api_key_env: "ZAI_API_KEY"
+    capabilities:
+      json_object: true
+    drop_params: []
+
