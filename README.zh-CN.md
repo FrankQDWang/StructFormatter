@@ -104,15 +104,19 @@ python examples/python_openai_sdk_dropin.py
 
 ## 发布到 npm
 
+备注（npm 在 2025-12 之后的鉴权变化）：
+- `npm login` 改为基于 session 的短时登录态，建议登录后尽快发布。
+- 发布通常需要 2FA；如果走 CI/CD，请使用 granular token（不要用 classic token）或配置 npm trusted publishing（OIDC）。
+
 1) 先登录 npm：
 
 ```bash
 npm login
+npm whoami
 ```
 
-2) 构建并发布：
+2) 发布（`prepack` 会自动执行 `npm run build`）：
 
 ```bash
-pnpm build
 npm publish
 ```

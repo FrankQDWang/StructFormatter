@@ -104,15 +104,19 @@ python examples/python_openai_sdk_dropin.py
 
 ## Publishing to npm
 
-1) Ensure you are logged in:
+Notes (npm auth changes as of Dec 2025):
+- `npm login` is session-based (short-lived), so publish shortly after logging in.
+- Publishing typically requires 2FA; for CI/CD use a granular token (not classic) or npm trusted publishing (OIDC).
+
+1) Log in:
 
 ```bash
 npm login
+npm whoami
 ```
 
-2) Build + publish:
+2) Publish (runs `npm run build` via `prepack`):
 
 ```bash
-pnpm build
 npm publish
 ```

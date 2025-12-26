@@ -30,6 +30,7 @@
   "files": [
     "dist",
     "config.example.yaml",
+    "CHANGELOG.md",
     "README.md",
     "README.zh-CN.md",
     "LICENSE"
@@ -40,7 +41,7 @@
     "start": "node dist/cli.js",
     "lint": "eslint .",
     "format": "prettier -w .",
-    "prepublishOnly": "pnpm build",
+    "prepack": "npm run build",
     "test": "vitest run"
   },
   "dependencies": {
