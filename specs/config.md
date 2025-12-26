@@ -1,4 +1,4 @@
-# StructuredFormatter — Configuration
+# StructFormatter — Configuration
 
 ## 中文摘要
 配置分两块：`providers`（上游端点与能力）+ `routing`（model 字符串怎么映射到 provider + upstream model）。
@@ -61,7 +61,7 @@ providers:
 
 ## 2) Environment variables
 
-- `STRUCTUREDFORMATTER_CONFIG`: path to config yaml/json
+- `STRUCTFORMATTER_CONFIG`: path to config yaml/json
 - `DEEPSEEK_API_KEY`, `ZAI_API_KEY`, `MOONSHOT_API_KEY`, ...
 
 ---

@@ -1,4 +1,4 @@
-# StructuredFormatter — Tasks (Codex execution plan)
+# StructFormatter — Tasks (Codex execution plan)
 
 > Goal: Codex should be able to “just follow this file” and implement end-to-end.
 
@@ -37,7 +37,7 @@
   - validate config shape
 
 **Acceptance**
-- `STRUCTUREDFORMATTER_CONFIG=...` loads config and prints a summary on startup.
+- `STRUCTFORMATTER_CONFIG=...` loads config and prints a summary on startup.
 
 ---
 
@@ -182,7 +182,7 @@
 - [ ] `examples/`:
   - `python_openai_sdk_dropin.py`
   - `curl_schema_enforced.sh`
-- [ ] show before/after: upstream broken JSON → StructuredFormatter returns clean schema-valid JSON.
+- [ ] show before/after: upstream broken JSON → StructFormatter returns clean schema-valid JSON.
 
 ---
 
@@ -191,4 +191,3 @@
 - Works as OpenAI SDK base_url drop-in
 - Enforces schema for non-A upstreams via B loop
 - Bounded retries, clear errors, tests included
-

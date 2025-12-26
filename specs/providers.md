@@ -1,4 +1,4 @@
-# StructuredFormatter — Providers & Adapters
+# StructFormatter — Providers & Adapters
 
 ## 中文摘要
 优先做一个“通用 OpenAI-compatible 适配器”，覆盖 DeepSeek / GLM(Z.ai) / Kimi 等大量上游；再做少量 provider-specific quirks（比如 DeepSeek strict tools 需要 beta base_url）。
@@ -84,4 +84,3 @@ Steps:
    - implement a new adapter that maps to OpenAI request/response format
 
 Acceptance: new adapter added without modifying B engine.
-

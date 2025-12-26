@@ -1,8 +1,8 @@
-# StructuredFormatter — Specs
+# StructFormatter — Specs
 
 > Goal: provide **“A-like structured output”** for LLM APIs that **do not natively support JSON Schema-constrained decoding** (“A”), by building a **drop-in, external bridge** that implements a **robust “B” strategy**: *prompting + parsing + JSON repair + JSON Schema validation + deterministic fixes + re-ask loops*.
 
-This repo is intentionally designed as an **external tool** (a sidecar/proxy). Your agent should not need code changes: it can keep calling an **OpenAI-compatible `/v1/chat/completions`** endpoint with `response_format: { type: "json_schema", ... }`, while StructuredFormatter takes care of enforcement behind the scenes.
+This repo is intentionally designed as an **external tool** (a sidecar/proxy). Your agent should not need code changes: it can keep calling an **OpenAI-compatible `/v1/chat/completions`** endpoint with `response_format: { type: "json_schema", ... }`, while StructFormatter takes care of enforcement behind the scenes.
 
 ---
 
@@ -54,4 +54,3 @@ When in doubt, the priority is:
 1. **Correctness** (always return schema-valid JSON or a well-typed error)
 2. **Drop-in compatibility** (OpenAI-shaped endpoint)
 3. **Performance** (caching, minimal prompt bloat, bounded retries)
-

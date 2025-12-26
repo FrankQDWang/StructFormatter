@@ -1,7 +1,7 @@
-# StructuredFormatter — API (OpenAI-Compatible)
+# StructFormatter — API (OpenAI-Compatible)
 
 ## 中文摘要
-对外只暴露一个 OpenAI 形状的接口：`POST /v1/chat/completions`。当 `response_format.type=json_schema` 时，StructuredFormatter 承诺：**返回符合 schema 的 JSON**（或返回结构化错误），从而让 Agent 不用修改任何逻辑。
+对外只暴露一个 OpenAI 形状的接口：`POST /v1/chat/completions`。当 `response_format.type=json_schema` 时，StructFormatter 承诺：**返回符合 schema 的 JSON**（或返回结构化错误），从而让 Agent 不用修改任何逻辑。
 
 ---
 
@@ -129,4 +129,3 @@ Default: no debug fields; strict OpenAI compatibility.
 - If `stream=true` AND `response_format.type="json_schema"`:
   - v1 behavior: return 400 with message “streaming not supported for schema-enforced requests”
   - (future) support SSE streaming once “valid fragment” streaming validation is implemented.
-

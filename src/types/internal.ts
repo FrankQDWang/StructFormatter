@@ -51,7 +51,7 @@ export interface StructuredError {
   attemptTraces?: unknown[];
 }
 
-export class StructuredFormatterError extends Error {
+export class StructFormatterError extends Error {
   public readonly type: string;
   public readonly statusCode: number;
   public readonly details?: Record<string, unknown>;
@@ -63,4 +63,3 @@ export class StructuredFormatterError extends Error {
     this.details = details;
   }
 }
-

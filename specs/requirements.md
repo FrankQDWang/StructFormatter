@@ -1,4 +1,4 @@
-# StructuredFormatter — Requirements
+# StructFormatter — Requirements
 
 ## 1. 中文摘要
 我们要做一个**外部工具/桥接服务**：在不改动 Agent 代码的前提下，让 **不支持 A（JSON Schema 约束解码）** 的 LLM API 也能“像支持 A 一样”交付结构化 JSON ——通过 **B 策略**（JSON 模式/提示词 + 解析 + JSON repair + JSON Schema 校验 + deterministic fix + re-ask 重试）。
@@ -97,4 +97,3 @@ AC2. With broken JSON outputs (missing quotes, trailing commas, code fences), th
 AC3. Drop-in integration: OpenAI SDK can call this server by changing `base_url`.
 
 AC4. Adding a new provider adapter takes < 50 LOC + config.
-

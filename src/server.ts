@@ -85,7 +85,12 @@ export function createServer(config: AppConfig) {
     logger:
       process.env.NODE_ENV === 'test'
         ? false
-        : { level: process.env.STRUCTUREDFORMATTER_LOG_LEVEL ?? 'info' },
+        : {
+            level:
+              process.env.STRUCTFORMATTER_LOG_LEVEL ??
+              process.env.STRUCTUREDFORMATTER_LOG_LEVEL ??
+              'info',
+          },
     bodyLimit: config.server.request_body_limit_mb * 1024 * 1024,
     genReqId: () => randomUUID(),
   });

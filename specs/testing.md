@@ -1,4 +1,4 @@
-# StructuredFormatter — Testing Plan
+# StructFormatter — Testing Plan
 
 ## 中文摘要
 测试要覆盖：JSON 抽取/修复、schema 校验、re-ask 闭环、OpenAI 兼容性（SDK 调用不改代码）、以及性能基准。
@@ -44,7 +44,7 @@ Implement a fake upstream provider server:
   2) valid JSON but schema-invalid (second call)
   3) schema-valid JSON (third call)
 
-Verify StructuredFormatter:
+Verify StructFormatter:
 - performs repair then re-ask as needed
 - returns final schema-valid output
 
@@ -53,7 +53,7 @@ Verify StructuredFormatter:
 ## 3) Compatibility tests
 
 ### 3.1 OpenAI SDK drop-in
-Use OpenAI Python/JS SDK pointing base_url at StructuredFormatter and run:
+Use OpenAI Python/JS SDK pointing base_url at StructFormatter and run:
 - normal free-form call (pass-through)
 - schema-enforced call
 
@@ -84,4 +84,3 @@ Create a `fixtures/` directory (Codex will add) with:
 - expected fixed outputs (golden)
 
 Run in CI.
-

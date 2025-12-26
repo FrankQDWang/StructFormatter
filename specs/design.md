@@ -1,4 +1,4 @@
-# StructuredFormatter — Design
+# StructFormatter — Design
 
 ## 中文摘要
 整体架构：**OpenAI-compatible Proxy + Structured Enforcement Engine**。对外提供 `/v1/chat/completions`，对内支持多 provider 路由；当请求包含 `response_format: json_schema` 时，走 **B 强制链路**：调用上游 → JSON 抽取/修复 → Ajv 校验 → deterministic fix → re-ask（带错误信息）→ 直到成功或失败。

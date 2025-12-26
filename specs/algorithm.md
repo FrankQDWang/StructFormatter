@@ -1,4 +1,4 @@
-# StructuredFormatter — Algorithm (B Engine)
+# StructFormatter — Algorithm (B Engine)
 
 ## 中文摘要
 B 的核心：**先尽量用上游的 JSON Mode / tool calls 降低错误率，再用本地 JSON repair + schema 校验兜底，最后用 re-ask 把错误闭环**。最终对 Agent 暴露一个“像 A 一样”的语义：要么返回 schema-valid JSON，要么返回结构化错误。
@@ -175,4 +175,3 @@ DeepSeek docs: strict mode is beta and requires their beta base_url and `strict:
 - https://api-docs.deepseek.com/guides/tool_calls
 
 We can optionally implement a “tool-call first” strategy when supported.
-

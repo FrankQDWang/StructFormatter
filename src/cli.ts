@@ -6,13 +6,13 @@ import { createServer } from './server';
 function printHelp() {
   console.log(
     [
-      'StructuredFormatter (OpenAI-compatible structured output proxy)',
+      'StructFormatter (OpenAI-compatible structured output proxy)',
       '',
       'Usage:',
-      '  structuredformatter [--config <path>]',
+      '  structformatter [--config <path>]',
       '',
       'Options:',
-      '  --config, -c   Path to config.yaml/config.json (defaults to STRUCTUREDFORMATTER_CONFIG or ./config.{yaml,yml,json})',
+      '  --config, -c   Path to config.yaml/config.json (defaults to STRUCTFORMATTER_CONFIG or ./config.{yaml,yml,json})',
       '  --help, -h     Show this help',
       '',
     ].join('\n'),
