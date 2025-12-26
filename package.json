@@ -1,6 +1,6 @@
 {
   "name": "structuredformatter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OpenAI-compatible proxy that enforces JSON Schema structured outputs for upstream LLM APIs that do not support native constrained decoding.",
   "license": "MIT",
   "repository": {
