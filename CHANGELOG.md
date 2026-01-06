@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [0.1.4] - 2026-01-06
+
+### Added
+
+- Docker deployment: `Dockerfile`, `docker-compose.yml`, healthcheck.
+- CI: run lint/test on macOS (in addition to Ubuntu).
+
+### Changed
+
+- Platform support: Linux/macOS only (Windows native is not supported).
+- Packaging/runtime: block installation and startup on Windows (win32).
+
 ## [0.1.3] - 2025-12-27
 
 ### Added

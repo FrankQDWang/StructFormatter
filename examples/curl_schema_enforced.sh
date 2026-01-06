@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-curl -sS http://localhost:8080/v1/chat/completions \
+curl -sS http://localhost:18081/v1/chat/completions \
   -H 'Content-Type: application/json' \
   -H 'X-SF-Debug: 1' \
   -d '{
@@ -24,4 +24,3 @@ curl -sS http://localhost:8080/v1/chat/completions \
       }
     }
   }' | python -m json.tool
-

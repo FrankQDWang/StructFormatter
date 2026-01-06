@@ -74,7 +74,7 @@ Agent should be able to do:
 
 ```python
 from openai import OpenAI
-client = OpenAI(base_url="http://localhost:8080/v1", api_key="anything")
+client = OpenAI(base_url="http://localhost:18081/v1", api_key="anything")
 client.chat.completions.create(...)
 ```
 

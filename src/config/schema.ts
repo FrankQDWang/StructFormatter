@@ -3,10 +3,10 @@ import { z } from 'zod';
 export const ServerConfigSchema = z
   .object({
     host: z.string().default('0.0.0.0'),
-    port: z.number().int().min(1).max(65535).default(8080),
+    port: z.number().int().min(1).max(65535).default(18081),
     request_body_limit_mb: z.number().int().min(1).max(100).default(2),
   })
-  .default({ host: '0.0.0.0', port: 8080, request_body_limit_mb: 2 });
+  .default({ host: '0.0.0.0', port: 18081, request_body_limit_mb: 2 });
 
 export const EnforcementConfigSchema = z
   .object({
@@ -61,7 +61,7 @@ export const AppConfigSchema = z
     providers: z.record(z.string(), ProviderConfigSchema).default({}),
   })
   .default({
-    server: { host: '0.0.0.0', port: 8080, request_body_limit_mb: 2 },
+    server: { host: '0.0.0.0', port: 18081, request_body_limit_mb: 2 },
     enforcement: {
       max_attempts: 3,
       timeout_ms_per_attempt: 20_000,

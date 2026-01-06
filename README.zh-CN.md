@@ -17,13 +17,26 @@ StructFormatter 是一个 **OpenAI 兼容的代理服务（sidecar/proxy）**：
 
 `specs/` 目录是项目的设计与验收来源（架构、API 合约、算法、测试计划、任务清单）。
 
+## 保证范围（与不保证）
+
+当请求包含 `response_format.type="json_schema"` 时，StructFormatter 承诺：
+- 成功：`choices[0].message.content` 是**可解析且通过 schema 校验的 JSON 字符串**，或
+- 失败：HTTP **422** + 结构化错误。
+
+它**不保证**语义正确/事实正确（值仍可能是错的）。它也**不是**原生约束解码；并且 v1 对 schema 强制请求**不支持 streaming**。
+
+## 平台支持
+
+已支持并在 CI 覆盖：**Linux**、**macOS**。  
+不支持 Windows 原生运行；如需在 Windows 上使用请考虑 WSL2 或 Docker。
+
 ## 适用场景
 
 很多厂商只提供 “JSON mode”（保证输出是合法 JSON），但**不保证**符合你提供的 JSON Schema。
 
 如果你的 agent 流程强依赖结构化输出，StructFormatter 可以作为一个“外置桥接服务”，让你的 agent **基本不用改逻辑**，只改 `base_url` 即可。
 
-## 快速开始（源码运行）
+## 快速开始（源码运行，macOS/Linux）
 
 ```bash
 pnpm install
@@ -37,7 +50,7 @@ pnpm dev
 - `GET /v1/models`
 - `POST /v1/chat/completions`
 
-## 快速开始（npm）
+## 快速开始（npm，macOS/Linux）
 
 ```bash
 pnpm dlx structformatter --config ./config.yaml
@@ -53,7 +66,7 @@ npx structformatter --config ./config.yaml
 
 把 OpenAI SDK 的 `base_url` 指向本服务：
 
-- Base URL：`http://localhost:8080/v1`
+- Base URL：`http://localhost:18081/v1`
 - `model` 命名：`provider/model`（例如 `deepseek/deepseek-chat`）
   - 或者在 `config.yaml` 里用 `routing.model_aliases` 做别名映射
 

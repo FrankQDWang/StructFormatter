@@ -17,13 +17,26 @@ prompting → JSON extraction → JSON repair → JSON Schema validation (Ajv) �
 
 The `specs/` directory is the source of truth (architecture, API contract, algorithm, testing plan, and checklist).
 
+## Guarantees (and non-goals)
+
+When `response_format.type="json_schema"` is provided, StructFormatter guarantees:
+- `choices[0].message.content` is a JSON string that parses and validates against your schema, **or**
+- HTTP **422** with a typed error payload.
+
+It does **not** guarantee semantic correctness (values can still be wrong). It is also **not** true constrained decoding, and v1 does **not** support streaming for schema-enforced requests.
+
+## Platform support
+
+Supported and CI-tested: **Linux** and **macOS**.  
+Windows (native) is **not supported** — use WSL2 or Docker if needed.
+
 ## Why you may want this
 
 If you use agents that rely on structured outputs, many providers only offer “JSON mode” (valid JSON) but **not** JSON Schema constrained decoding.
 
 This service lets your agent keep calling an OpenAI-shaped endpoint, while StructFormatter enforces schema validity behind the scenes.
 
-## Quickstart (from source)
+## Quickstart (from source, macOS/Linux)
 
 ```bash
 pnpm install
@@ -37,7 +50,7 @@ Endpoints:
 - `GET /v1/models`
 - `POST /v1/chat/completions`
 
-## Quickstart (npm)
+## Quickstart (npm, macOS/Linux)
 
 ```bash
 pnpm dlx structformatter --config ./config.yaml
@@ -49,11 +62,30 @@ or:
 npx structformatter --config ./config.yaml
 ```
 
+## Docker (macOS/Linux)
+
+```bash
+cp config.example.yaml config.yaml
+export DEEPSEEK_API_KEY=...   # if used by your config
+export ZAI_API_KEY=...        # if used by your config
+docker compose up --build
+```
+
+Or:
+
+```bash
+docker build -t structformatter:0.1.4 .
+docker run --rm -p 18081:18081 \
+  -v "$(pwd)/config.yaml:/app/config.yaml:ro" \
+  -e STRUCTFORMATTER_CONFIG=/app/config.yaml \
+  structformatter:0.1.4
+```
+
 ## Agent integration (drop-in)
 
 Point your OpenAI SDK `base_url` to this server:
 
-- Base URL: `http://localhost:8080/v1`
+- Base URL: `http://localhost:18081/v1`
 - Model naming: `provider/model` (e.g. `deepseek/deepseek-chat`)
   - or use `routing.model_aliases` in `config.yaml` (e.g. `glm` → `zai/glm-4.5`)
 

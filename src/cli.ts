@@ -38,6 +38,11 @@ function parseArgs(argv: string[]) {
 }
 
 async function main() {
+  if (process.platform === 'win32') {
+    console.error('StructFormatter does not support native Windows (win32). Use Linux/macOS, WSL2, or Docker.');
+    process.exit(1);
+  }
+
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
     printHelp();

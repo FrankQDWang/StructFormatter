@@ -13,7 +13,7 @@ Use `config.yaml` (recommended) or `config.json`.
 ```yaml
 server:
   host: 0.0.0.0
-  port: 8080
+  port: 18081
   request_body_limit_mb: 2
 
 enforcement:

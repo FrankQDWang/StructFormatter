@@ -5,7 +5,7 @@ from openai import OpenAI
 
 def main() -> None:
     client = OpenAI(
-        base_url=os.environ.get("SF_BASE_URL", "http://localhost:8080/v1"),
+        base_url=os.environ.get("SF_BASE_URL", "http://localhost:18081/v1"),
         api_key="anything",
     )
 
@@ -29,4 +29,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
